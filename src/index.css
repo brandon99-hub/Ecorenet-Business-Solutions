@@ -13,6 +13,10 @@
 }
 
 @layer base {
+  html {
+    @apply scroll-smooth scroll-pt-24;
+  }
+  
   body {
     @apply bg-background text-primary font-body antialiased;
   }

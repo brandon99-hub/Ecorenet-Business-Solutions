@@ -17,7 +17,7 @@
     <meta property="og:url" content="https://www.ecorenet.co.ke/" />
     <meta property="og:title" content="Ecorenet Business Solutions | Microsoft Solutions Partner — Nairobi, Kenya" />
     <meta property="og:description" content="Certified Microsoft Solutions Partner delivering Dynamics 365, Azure, Microsoft 365, and Power Platform across East Africa. Innovate. Connect. Inspire." />
-    <meta property="og:image" content="https://www.ecorenet.co.ke/Public/logo.png" />
+    <meta property="og:image" content="https://www.ecorenet.co.ke/Public/ecorenet_social_banner_1200x630.svg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="en_KE" />
@@ -27,39 +27,60 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Ecorenet Business Solutions | Microsoft Solutions Partner" />
     <meta name="twitter:description" content="Certified Microsoft Solutions Partner delivering Dynamics 365, Azure, and Power Platform across East Africa." />
-    <meta name="twitter:image" content="https://www.ecorenet.co.ke/Public/logo.png" />
+    <meta name="twitter:image" content="https://www.ecorenet.co.ke/Public/ecorenet_social_banner_1200x630.svg" />
 
     <!-- ─── JSON-LD Structured Data ──────────────────────────────────────────── -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Ecorenet Business Solutions Limited",
-      "url": "https://www.ecorenet.co.ke",
-      "logo": "https://www.ecorenet.co.ke/Public/logo.png",
-      "description": "Certified Microsoft Solutions Partner delivering Dynamics 365, Azure, Microsoft 365, and Power Platform implementations across East Africa.",
-      "foundingLocation": "Nairobi, Kenya",
-      "areaServed": "East Africa",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Lanphil Arcade, Ridgeways, Off Kiambu Rd",
-        "addressLocality": "Nairobi",
-        "addressCountry": "KE"
-      },
-      "telephone": "+254796801946",
-      "email": "info@ecorenet.co.ke",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+254796801946",
-        "contactType": "customer support",
-        "areaServed": "East Africa",
-        "availableLanguage": "English"
-      },
-      "sameAs": []
+      "@graph": [
+        {
+          "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
+          "@id": "https://www.ecorenet.co.ke/#organization",
+          "name": "Ecorenet Business Solutions Limited",
+          "url": "https://www.ecorenet.co.ke",
+          "logo": "https://www.ecorenet.co.ke/Public/logo.png",
+          "image": "https://www.ecorenet.co.ke/Public/ecorenet_social_banner_1200x630.svg",
+          "description": "Certified Microsoft Solutions Partner delivering Dynamics 365, Azure, Microsoft 365, and Power Platform implementations across East Africa.",
+          "foundingLocation": "Nairobi, Kenya",
+          "areaServed": "East Africa",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Lanphil Arcade, Ridgeways, Off Kiambu Rd",
+            "addressLocality": "Nairobi",
+            "addressCountry": "KE"
+          },
+          "telephone": "+254796801946",
+          "email": "info@ecorenet.co.ke",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+254796801946",
+            "contactType": "customer support",
+            "areaServed": "East Africa",
+            "availableLanguage": "English"
+          },
+          "sameAs": []
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.ecorenet.co.ke/#website",
+          "url": "https://www.ecorenet.co.ke",
+          "name": "Ecorenet Business Solutions",
+          "publisher": {
+            "@id": "https://www.ecorenet.co.ke/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.ecorenet.co.ke/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
     }
     </script>
 
-    <!-- ─── Google Fonts ─────────────────────────────────────────────────────── -->
+    <!-- ─── Favicon & Google Fonts ─────────────────────────────────────────────── -->
+    <link rel="icon" type="image/png" href="/Public/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800;900&display=swap" rel="stylesheet" />
