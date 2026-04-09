@@ -55,7 +55,7 @@ const Navbar = ({ onOpenContact }: { onOpenContact: () => void }) => {
       <div className="max-w-7xl mx-auto px-6 md:px-8 flex justify-between items-center">
         <div className="flex-shrink-0 py-1 overflow-visible">
           <img
-            src="/Public/logo.png"
+            src="/logo.png"
             alt="Ecorenet Business Solutions Limited"
             className={`w-auto object-contain transition-all duration-300 scale-[2.5] origin-left ${
               isScrolled ? 'h-10' : 'h-12'

@@ -226,33 +226,33 @@ const Philosophy = () => {
 const ProductsGrid = () => {
   const products = [
     {
-      icon: <img src="/Public/Dynamics 365.png" alt="Microsoft Dynamics 365 CRM and ERP implementation East Africa" className="w-full h-full object-contain" />,
+      icon: <img src="/Dynamics 365.png" alt="Microsoft Dynamics 365 CRM and ERP implementation East Africa" className="w-full h-full object-contain" />,
       title: "Dynamics 365",
       desc: "Sales, service, and operations in one platform."
     },
     {
-      icon: <img src="/Public/microsoft 365.jpg" alt="Microsoft 365 collaboration and productivity suite Kenya" className="w-full h-full object-contain" />,
+      icon: <img src="/microsoft 365.jpg" alt="Microsoft 365 collaboration and productivity suite Kenya" className="w-full h-full object-contain" />,
       title: "Microsoft 365",
       desc: "Word, Excel, Teams, and secure cloud storage."
     },
     {
-      icon: <img src="/Public/azure.jpg" alt="Microsoft Azure cloud compute and AI services Kenya" className="w-12 h-12 object-contain" />,
+      icon: <img src="/azure.jpg" alt="Microsoft Azure cloud compute and AI services Kenya" className="w-12 h-12 object-contain" />,
       title: "Azure",
       desc: "Cloud compute, AI, and data services.",
       plain: true,
-      headerImage: "/Public/Azure3.jpg"
+      headerImage: "/Azure3.jpg"
     },
     {
-      icon: <img src="/Public/powerlogo.jpg" alt="Microsoft Power Platform low-code development and automation" className="w-full h-full object-contain" />,
+      icon: <img src="/powerlogo.jpg" alt="Microsoft Power Platform low-code development and automation" className="w-full h-full object-contain" />,
       title: "Power Platform",
       desc: "Power BI, Apps, Automate, and Virtual Agents.",
-      headerImage: "/Public/Powerapp1.jpg"
+      headerImage: "/Powerapp1.jpg"
     },
     {
-      icon: <img src="/Public/business central.jpg" alt="Dynamics 365 Business Central ERP system Nairobi" className="w-full h-full object-contain" />,
+      icon: <img src="/business central.jpg" alt="Dynamics 365 Business Central ERP system Nairobi" className="w-full h-full object-contain" />,
       title: "Business Central",
       desc: "Finance, supply chain, and project management.",
-      headerImage: "/Public/business central1.png"
+      headerImage: "/business central1.png"
     }
   ];
 

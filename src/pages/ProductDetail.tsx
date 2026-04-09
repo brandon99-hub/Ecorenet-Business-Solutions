@@ -9,7 +9,7 @@ const productsData: Record<string, any> = {
     name: 'Dynamics 365',
     tagline: 'Unify your CRM and ERP capabilities',
     color: 'bg-blue-600',
-    headerImg: '/Public/Dynamics 365.png',
+    headerImg: '/Dynamics 365.png',
     overview: 'Microsoft Dynamics 365 is a portfolio of intelligent business applications that empowers organizations to deliver operational excellence and create more engaging customer experiences. From sales and customer service to finance and supply chain, Dynamics 365 breaks down data silos to provide a single, comprehensive view of your business.',
     features: [
       { title: 'Intelligent Sales', desc: 'Accelerate revenue with AI-driven insights that guide sellers to the best outcomes.' },
@@ -24,7 +24,7 @@ const productsData: Record<string, any> = {
     name: 'Business Central',
     tagline: 'The ultimate all-in-one business management solution for SMBs',
     color: 'bg-emerald-600',
-    headerImg: '/Public/business central1.png',
+    headerImg: '/business central1.png',
     overview: 'Dynamics 365 Business Central enables mid-sized organizations to connect their finance, sales, service, and operations. Built for the modern workforce, it provides the agility needed to grow and the security needed to protect your data natively within the Microsoft Cloud.',
     features: [
       { title: 'Financial Management', desc: 'Accelerate financial close and report with accuracy, while ensuring global compliance.' },
@@ -39,7 +39,7 @@ const productsData: Record<string, any> = {
     name: 'Microsoft 365',
     tagline: 'The productivity cloud that connects your workforce',
     color: 'bg-red-500',
-    headerImg: '/Public/microsoft 365.jpg',
+    headerImg: '/microsoft 365.jpg',
     overview: 'More than just Word and Excel, Microsoft 365 is the world\'s premiere collaboration suite. It empowers teams to work flexibly and securely from anywhere in the world. With built-in Enterprise Mobility + Security, it ensures that your corporate data remains protected across all devices.',
     features: [
       { title: 'Microsoft Teams', desc: 'Chat, call, and collaborate on documents in real-time within a single hub.' },
@@ -54,7 +54,7 @@ const productsData: Record<string, any> = {
     name: 'Power Platform',
     tagline: 'Analyze data, build apps, and automate workflows',
     color: 'bg-purple-600',
-    headerImg: '/Public/Powerapp1.jpg',
+    headerImg: '/Powerapp1.jpg',
     overview: 'The Microsoft Power Platform is a low-code/no-code suite that empowers anyone in your organization to build custom solutions. Stop waiting on expensive developer resources and start automating the tedious tasks that slow your business down.',
     features: [
       { title: 'Power BI', desc: 'Make informed, confident business decisions by putting data-driven insights into everyone\'s hands.' },
@@ -69,7 +69,7 @@ const productsData: Record<string, any> = {
     name: 'Microsoft Azure',
     tagline: 'Invent with purpose, realize cost savings, and secure your future',
     color: 'bg-sky-600',
-    headerImg: '/Public/Azure3.jpg',
+    headerImg: '/Azure3.jpg',
     overview: 'Microsoft Azure is an ever-expanding set of cloud computing services to help your organization meet its business challenges. It provides the freedom to build, manage, and deploy applications on a massive, global network using your preferred tools and frameworks.',
     features: [
       { title: 'Infrastructure as a Service (IaaS)', desc: 'Scale compute resources on-demand and migrate legacy servers to the cloud.' },
