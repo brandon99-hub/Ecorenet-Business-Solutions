@@ -14,7 +14,10 @@ const port = 3005;
 const server = app.listen(port, async () => {
   console.log(`Prerender server running on port ${port}...`);
   try {
-    const browser = await puppeteer.launch({ headless: 'new' });
+    const browser = await puppeteer.launch({ 
+      headless: 'new',
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     const page = await browser.newPage();
     
     // Intercept network requests to prevent loading external resources
