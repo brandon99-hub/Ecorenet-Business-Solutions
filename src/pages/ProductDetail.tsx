@@ -16,7 +16,9 @@ const productsData: Record<string, any> = {
       { title: 'Customer Service', desc: 'Deliver exceptional experiences across channels with unified case management.' },
       { title: 'Supply Chain Operations', desc: 'Build agile, connected supply chains with predictive analytics.' }
     ],
-    integrations: 'Integrates natively with Microsoft 365 and Teams, allowing users to view customer records and update pipeline data directly within their chat and email clients.'
+    integrations: 'Integrates natively with Microsoft 365 and Teams, allowing users to view customer records and update pipeline data directly within their chat and email clients.',
+    seoTitle: 'Microsoft Dynamics 365 Partner Kenya | CRM & ERP Solutions',
+    seoDesc: 'Certified Microsoft Dynamics 365 implementation partner in Nairobi, Kenya. We unify your CRM and ERP with intelligent business applications.'
   },
   'business-central': {
     name: 'Business Central',
@@ -29,7 +31,9 @@ const productsData: Record<string, any> = {
       { title: 'Project Management', desc: 'Track project performance in real-time, matching capacity to demand.' },
       { title: 'Inventory Automation', desc: 'Optimize inventory levels using built-in intelligence predicting when and what to replenish.' }
     ],
-    integrations: 'Fully integrated with Microsoft Excel for rapid data manipulation and Power Automate for custom approval workflows.'
+    integrations: 'Fully integrated with Microsoft Excel for rapid data manipulation and Power Automate for custom approval workflows.',
+    seoTitle: 'Dynamics 365 Business Central Kenya | All-in-One SMB ERP',
+    seoDesc: 'Boost your SMB productivity with Microsoft Dynamics 365 Business Central. Expert financial and supply chain management in Nairobi, Kenya.'
   },
   'microsoft-365': {
     name: 'Microsoft 365',
@@ -42,7 +46,9 @@ const productsData: Record<string, any> = {
       { title: 'SharePoint & OneDrive', desc: 'Secure cloud storage that replaces outdated on-premise file servers.' },
       { title: 'Advanced Threat Protection', desc: 'Defend against phishing, ransomware, and zero-day malware attacks automatically.' }
     ],
-    integrations: 'Serves as the foundational identity layer (Entra ID) and collaborative surface for all Dynamics 365 and Power Platform applications.'
+    integrations: 'Serves as the foundational identity layer (Entra ID) and collaborative surface for all Dynamics 365 and Power Platform applications.',
+    seoTitle: 'Microsoft 365 for Business Kenya | Modern Workplace Solutions',
+    seoDesc: 'Empower your remote workforce with Microsoft 365. Secure collaboration, cloud storage, and advanced threat protection for Kenyan businesses.'
   },
   'power-platform': {
     name: 'Power Platform',
@@ -55,7 +61,9 @@ const productsData: Record<string, any> = {
       { title: 'Power Apps', desc: 'Turn ideas into organizational solutions by enabling everyone to build custom apps that solve business challenges.' },
       { title: 'Power Automate', desc: 'Boost business productivity to get more done by giving everyone the ability to automate organizational processes.' }
     ],
-    integrations: 'Connects to over 500+ data sources natively, including Salesforce, Oracle, and Google Workspace, acting as the universal glue for your IT stack.'
+    integrations: 'Connects to over 500+ data sources natively, including Salesforce, Oracle, and Google Workspace, acting as the universal glue for your IT stack.',
+    seoTitle: 'Microsoft Power Platform Kenya | Power BI & Automation Experts',
+    seoDesc: 'Accelerate digital transformation with Power BI, Power Apps, and Power Automate. Custom low-code solutions for organizations in East Africa.'
   },
   'azure': {
     name: 'Microsoft Azure',
@@ -68,7 +76,9 @@ const productsData: Record<string, any> = {
       { title: 'Data & AI', desc: 'Harness the power of machine learning and large language models within secure boundaries.' },
       { title: 'Disaster Recovery', desc: 'Ensure business continuity with automated site recovery and geo-redundant backups.' }
     ],
-    integrations: 'Provides the secure foundational architecture and compute layer that powers the entire Microsoft Cloud ecosystem.'
+    integrations: 'Provides the secure foundational architecture and compute layer that powers the entire Microsoft Cloud ecosystem.',
+    seoTitle: 'Microsoft Azure Cloud Services Kenya | Scalable Infrastructure & AI',
+    seoDesc: 'Build, manage, and deploy applications in the cloud with Microsoft Azure. Certified Azure partner in Nairobi providing IaaS, Data, and AI solutions.'
   }
 };
 
@@ -77,6 +87,27 @@ export default function ProductDetail() {
   const product = id ? productsData[id] : null;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Dynamic SEO Metadata Injection
+  useEffect(() => {
+    if (product) {
+      // Update Title
+      document.title = `${product.seoTitle} | Ecorenet Business Solutions`;
+      
+      // Update Meta Description
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', product.seoDesc);
+      }
+
+      // Update Open Graph tags for better social sharing
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute('content', product.seoTitle);
+      
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) ogDesc.setAttribute('content', product.seoDesc);
+    }
+  }, [product]);
 
   if (!product) {
     return (
@@ -98,6 +129,7 @@ export default function ProductDetail() {
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url('${product.headerImg}')`, transform: 'scale(1.05)' }}
+            aria-label={`${product.name} background image`}
           />
           {/* Deep overlay to ensure text readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/40"></div>

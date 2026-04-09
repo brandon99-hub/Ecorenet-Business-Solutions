@@ -6,6 +6,9 @@ const express = require('express');
 const app = express();
 const distDir = path.join(__dirname, 'dist');
 app.use(express.static(distDir));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(distDir, 'index.html'));
+});
 const port = 3005;
 
 const server = app.listen(port, async () => {
