@@ -1,13 +1,24 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 
 dotenv.config({ path: '.env.local' });
 
 const app = express();
 const PORT = process.env.API_PORT || 3001;
 
+// ES Module __dirname fix
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(express.json());
+
+// Serve static files from the 'dist' directory
+app.use(express.static(path.join(__dirname, 'dist')));
+
 
 // ─── Nodemailer Transporter (Microsoft 365) ──────────────────────────────────
 const transporter = nodemailer.createTransport({
@@ -122,6 +133,15 @@ app.post('/api/contact', async (req, res) => {
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
+
+// Handle SPA routing - serve index.html for any unknown routes
+app.get('*', (req, res) => {
+  if (req.path.startsWith('/api')) {
+    return res.status(404).json({ error: 'API route not found' });
+  }
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
 
 app.listen(PORT, () => {
   console.log(`✅ API server running on http://localhost:${PORT}`);
