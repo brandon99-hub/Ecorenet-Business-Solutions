@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 
-dotenv.config({ path: '.env.local' });
+dotenv.config();
 
 const app = express();
 const PORT = process.env.API_PORT || 3001;
@@ -28,9 +28,6 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS, // Microsoft App Password
-  },
-  tls: {
-    ciphers: 'SSLv3',
   },
 });
 
@@ -121,10 +118,10 @@ app.post('/api/contact', async (req, res) => {
       html: htmlBody,
     });
 
-    console.log(`✉️  Inquiry from ${fullName} <${email}> sent successfully.`);
+    console.log(`✉️  Inquiry from ${fullName} <${email}> [Source: ${originText}] sent successfully.`);
     res.json({ success: true });
   } catch (error) {
-    console.error('❌ Email send error:', error);
+    console.error(`❌ Email dispatch failed for ${fullName} <${email}>:`, error);
     res.status(500).json({ success: false, error: 'Failed to send email' });
   }
 });
@@ -143,6 +140,16 @@ app.get('*', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`✅ API server running on http://localhost:${PORT}`);
+  
+  // Verify Transporter connection on startup
+  console.log('📡 Verifying SMTP connection...');
+  try {
+    await transporter.verify();
+    console.log('✨ SMTP Connection: SUCCESS — Credentials are valid.');
+  } catch (error) {
+    console.error('⚠️  SMTP Connection: FAILED — Please check your .env SMTP_USER or SMTP_PASS.');
+    console.error('   Error detail:', error);
+  }
 });

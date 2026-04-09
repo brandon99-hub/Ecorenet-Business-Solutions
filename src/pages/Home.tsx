@@ -27,10 +27,13 @@ import {
   Sprout,
   GraduationCap,
   Wallet,
-  Loader2
+  Loader2,
+  Award,
+  Building,
+  Clock
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { useState, useEffect, ReactNode, ChangeEvent, FormEvent } from 'react';
+import { motion, AnimatePresence, animate, useInView } from 'motion/react';
+import { useState, useEffect, ReactNode, ChangeEvent, FormEvent, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
@@ -269,9 +272,11 @@ const ProductsGrid = () => {
             <span className="text-brand-red font-bold tracking-widest text-sm uppercase mb-4 block">OUR PRODUCTS</span>
             <h2 className="text-4xl md:text-5xl font-black text-primary mb-8">Frontline software products</h2>
             <p className="text-slate-500 mb-10 text-lg leading-relaxed">Integrated Microsoft solutions that streamline operations, enhance collaboration, and scale with your growth.</p>
-            <button className="border border-brand-red text-brand-red px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-brand-red hover:text-white transition-all">
-              View All Products <ArrowRight size={16} />
-            </button>
+            <a href="#products">
+              <button className="border border-brand-red text-brand-red px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-brand-red hover:text-white transition-all w-fit">
+                View All Products <ArrowRight size={16} />
+              </button>
+            </a>
           </motion.div>
           <motion.div 
             variants={containerVariants}
@@ -391,9 +396,11 @@ const Services = () => {
             <p className="text-slate-500 text-lg mb-10 max-w-md leading-relaxed">
               From strategy and implementation to training and ongoing support.
             </p>
-            <button className="bg-brand-red text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:opacity-90 transition-opacity shadow-lg shadow-brand-red/20">
-              Explore Services <ArrowRight size={20} />
-            </button>
+            <a href="#services">
+              <button className="bg-brand-red text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:opacity-90 transition-opacity shadow-lg shadow-brand-red/20">
+                Explore Services <ArrowRight size={20} />
+              </button>
+            </a>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -421,12 +428,41 @@ const Services = () => {
   );
 };
 
+
+const AnimatedCounter = ({ to, prefix = '', suffix = '' }: { to: number; prefix?: string; suffix?: string }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(0, to, {
+        duration: 2,
+        delay: 0.2,
+        onUpdate(value) {
+          setCount(Math.round(value));
+        },
+      });
+      return () => controls.stop();
+    }
+  }, [to, isInView]);
+
+  return <span ref={ref}>{prefix}{count}{suffix}</span>;
+};
+
 const WhyEcorenet = () => {
   const points = [
     "Microsoft-certified consultants",
     "Proven implementations across East Africa",
     "Fast response times and local presence",
     "Flexible engagement models"
+  ];
+
+  const counters = [
+    { icon: <Award className="text-brand-red" size={32} />, value: 70, suffix: '+', label: 'Successful Implementations', prefix: '' },
+    { icon: <Building className="text-brand-red" size={32} />, value: 30, suffix: '+', label: 'Enterprise Clients', prefix: '' },
+    { icon: <Users className="text-brand-red" size={32} />, value: 15, suffix: '+', label: 'Certified Experts', prefix: '' },
+    { icon: <Clock className="text-brand-red" size={32} />, value: 24, suffix: '/7', label: 'Priority Support', prefix: '' }
   ];
 
   return (
@@ -455,29 +491,25 @@ const WhyEcorenet = () => {
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-white p-10 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 relative"
+            className="grid grid-cols-2 gap-4 sm:gap-6"
           >
-            <div className="text-brand-red mb-8">
-              <Quote size={40} fill="currentColor" className="opacity-20" />
-            </div>
-            <p className="text-2xl font-medium text-primary leading-relaxed mb-10 italic">
-              "Ecorenet made our Dynamics rollout feel simple. Their team was hands-on, responsive, and genuinely invested in our success."
-            </p>
-            <div className="flex items-center gap-4">
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" 
-                alt="James Mwangi" 
-                className="w-14 h-14 rounded-full object-cover border-2 border-slate-50"
-                referrerPolicy="no-referrer"
-              />
-              <div>
-                <h4 className="font-bold text-primary">James Mwangi</h4>
-                <p className="text-sm text-slate-500">Operations Director, Manufacturing Firm</p>
+            {counters.map((counter, i) => (
+              <div 
+                key={i} 
+                className="bg-white p-6 sm:p-8 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-50 flex flex-col items-center text-center group hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
+              >
+                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                  {counter.icon}
+                </div>
+                <div className="text-3xl sm:text-4xl font-black text-primary mb-2 flex items-center justify-center">
+                  <AnimatedCounter to={counter.value} prefix={counter.prefix} suffix={counter.suffix} />
+                </div>
+                <p className="text-sm font-bold text-slate-500 uppercase tracking-wider">{counter.label}</p>
               </div>
-            </div>
+            ))}
           </motion.div>
         </div>
       </div>
