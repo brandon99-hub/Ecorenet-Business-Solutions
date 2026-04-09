@@ -72,14 +72,14 @@ const Hero = () => {
             {/* Top Row: 2 Cards */}
             <div className="md:col-span-3">
               <ProductCard 
-                icon={<img src="/Public/Dynamics 365.png" alt="Dynamics 365" className="w-full h-full object-contain" />} 
+                icon={<img src="/Dynamics 365.png" alt="Dynamics 365" className="w-full h-full object-contain" />} 
                 title="Dynamics 365" 
                 desc="CRM and ERP that connect your teams."
               />
             </div>
             <div className="md:col-span-3">
               <ProductCard 
-                icon={<img src="/Public/microsoft 365.jpg" alt="Microsoft 365" className="w-full h-full object-contain" />} 
+                icon={<img src="/microsoft 365.jpg" alt="Microsoft 365" className="w-full h-full object-contain" />} 
                 title="Microsoft 365" 
                 desc="Productivity, collaboration, and security."
               />
@@ -89,21 +89,21 @@ const Hero = () => {
             <div className="md:col-span-2">
               <ProductCard 
                 plainIcon={true}
-                icon={<img src="/Public/azure.jpg" alt="Azure" className="w-12 h-12 object-contain" />} 
+                icon={<img src="/azure.jpg" alt="Azure" className="w-12 h-12 object-contain" />} 
                 title="Azure" 
                 desc="Secure cloud, AI, and data infrastructure."
               />
             </div>
             <div className="md:col-span-2">
               <ProductCard 
-                icon={<img src="/Public/powerlogo.jpg" alt="Power Platform" className="w-full h-full object-contain" />} 
+                icon={<img src="/powerlogo.jpg" alt="Power Platform" className="w-full h-full object-contain" />} 
                 title="Power Platform" 
                 desc="Apps, automation, and insights."
               />
             </div>
             <div className="md:col-span-2">
               <ProductCard 
-                icon={<img src="/Public/business central.jpg" alt="Business Central" className="w-full h-full object-contain" />} 
+                icon={<img src="/business central.jpg" alt="Business Central" className="w-full h-full object-contain" />} 
                 title="Business Central" 
                 desc="All-in-one business management."
               />
